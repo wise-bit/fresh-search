@@ -1,5 +1,9 @@
+import java.io.FileNotFoundException;
+
 public class Main {
-    public static void main(String[] args) {
-        System.out.println("Aranesh stuff");
+    public static void main(String[] args) throws FileNotFoundException {
+
+        Miner m = new Miner("temp");
+
     }
 }
