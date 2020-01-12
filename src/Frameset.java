@@ -28,6 +28,7 @@ public class Frameset extends JFrame implements ActionListener {
         add(search_in);
 
         output = new JTextField();
+        output.setEditable(false);
         output.setBounds(0, 100, 400, 450);
         output.setVisible(true);
         add(output);
@@ -51,22 +52,26 @@ public class Frameset extends JFrame implements ActionListener {
         if (event.getSource() == sb_holder) {
 
             String text = sb_holder.getText();
+            System.out.println(text);
             int valid = 0;
             for (int x = 0; x <= text.length(); x++) {
 
-                String s =Character.toString(x);
+                String s = Character.toString(text.charAt(x));
                 if (s != " ") {
                     valid++;
                 }
 
             }
-
+            System.out.println(valid);
             if (valid >= 30) {
 
                 search_in.setText(" ");
                 output.setText(" Input MUST be less than 30 characters");
 
             }
+
+            // revalidate();
+            // repaint();
 
         }
     }

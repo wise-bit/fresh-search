@@ -53,7 +53,7 @@ public class Parser {
         String newS = "";
         for (String s : str.split(" ")) {
             // System.out.println(s + " : " + Main.persistentMap.get(s));
-            if (Main.persistentMap.get(s) == null && Main.persistentMap.get(s) < 0.00001) {
+            if (Main.persistentMap.get(s) != null && Main.persistentMap.get(s) < 0.00001) {
                 newS += s + " ";
             }
         }

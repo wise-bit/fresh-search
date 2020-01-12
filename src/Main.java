@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -41,7 +42,9 @@ public class Main {
 
         t = new Trainer();
 
-        new Parser("https://github.com/MLH/mlh-hackathon-blockstack-starter?utm_source=Major+League+Hacking+-+2020+Season&utm_campaign=cf20aa51c8-EYNTK_2020&utm_medium=email&utm_term=0_b490f2beb8-cf20aa51c8-9681793");
+        Frameset f = new Frameset();
+
+        // new Parser("https://github.com/MLH/mlh-hackathon-blockstack-starter?utm_source=Major+League+Hacking+-+2020+Season&utm_campaign=cf20aa51c8-EYNTK_2020&utm_medium=email&utm_term=0_b490f2beb8-cf20aa51c8-9681793");
 
         // Feedback. TODO: to be combined with GUI
         // t.rewardCalculate(true);
