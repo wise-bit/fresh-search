@@ -2,13 +2,16 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
+import java.awt.Color;
 
 
 public class Frameset extends JFrame implements ActionListener {
 
     public JTextField search_in;
-    public JButton searchButton;
-
+    public ImageIcon search_b;
+    public JButton sb_holder;
+    public JTextField output;
+    public static final Color VLB = new Color(51,204,255);
 
     public Frameset() {
 
@@ -18,11 +21,25 @@ public class Frameset extends JFrame implements ActionListener {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
 
-
         search_in = new JTextField();
-        search_in.setBounds(0,30,200,25);
+        search_in.setBounds(95, 30, 200, 25);
         search_in.setVisible(true);
+        search_in.setText("INPUT");
         add(search_in);
+
+        output = new JTextField();
+        output.setBounds(0, 100, 400, 450);
+        output.setVisible(true);
+        add(output);
+
+        search_b = new ImageIcon("res/search_b.png");
+        sb_holder = new JButton(search_b);
+        sb_holder.setBounds(180, 60, 30, 30);
+        sb_holder.setVisible(true);
+        sb_holder.addActionListener(this);
+        add(sb_holder);
+
+
         repaint();
 
 
@@ -31,11 +48,30 @@ public class Frameset extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent event) {
 
-        // if event.getSource() ==
+        if (event.getSource() == sb_holder) {
 
+            String text = sb_holder.getText();
+            int valid = 0;
+            for (int x = 0; x <= text.length(); x++) {
 
+                String s =Character.toString(x);
+                if (s != " ") {
+                    valid++;
+                }
 
+            }
 
+            if (valid >= 30) {
 
+                search_in.setText(" ");
+                output.setText(" Input MUST be less than 30 characters");
+
+            }
+
+        }
     }
 }
+
+
+
+
