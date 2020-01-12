@@ -5,9 +5,12 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Parser {
+
+    public String keywords;
 
     public Parser(String urlString) throws IOException {
 
@@ -23,7 +26,7 @@ public class Parser {
             scanner.close();
 
         } catch ( Exception ex ) {
-            ex.printStackTrace();
+            // ex.printStackTrace();
         }
 
 //        URL url = new URL("https://en.wikipedia.org/wiki/ASDF");
@@ -34,30 +37,31 @@ public class Parser {
 //        String cleanHtml = readability.outerHtml();
 //
 //        System.out.println(cleanHtml);
-
-        String plainText= Jsoup.parse(content).text();
+        String plainText = "";
 
         try {
+
+            plainText = Jsoup.parse(content).text();
             int requiredIndex = plainText.indexOf("Retrieved from");
             plainText = plainText.substring(0, requiredIndex);
+
         } catch (Exception e) {
 
         }
 
         // System.out.println(plainText); // this needs to be filtered
-        System.out.println(filter(plainText));
+        keywords = filter(plainText);
 
     }
 
     public String filter(String str) {
         String newS = "";
         for (String s : str.split(" ")) {
-            // System.out.println(s + " : " + Main.persistentMap.get(s));
             if (Main.persistentMap.get(s) != null && Main.persistentMap.get(s) < 0.00001) {
                 newS += s + " ";
             }
         }
-        return newS.substring(0, newS.length()-1);
+        return newS;
     }
 
 }
