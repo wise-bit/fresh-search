@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
 import java.awt.Color;
+import javax.swing.border.Border;
 
 
 public class Frameset extends JFrame implements ActionListener {
@@ -15,22 +16,29 @@ public class Frameset extends JFrame implements ActionListener {
 
     public Frameset() {
 
+
         this.setSize(400, 800);
         this.setLocation(200, 200);
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
+        getContentPane().setBackground(VLB);
+        Border border = BorderFactory.createLineBorder(Color.BLACK, 3);
+
 
         search_in = new JTextField();
         search_in.setBounds(95, 30, 200, 25);
         search_in.setVisible(true);
         search_in.setText("INPUT");
+        search_in.setBorder(border);
         add(search_in);
+
 
         output = new JTextField();
         output.setEditable(false);
-        output.setBounds(0, 100, 400, 450);
+        output.setBounds(0, 100, 385, 450);
         output.setVisible(true);
+        output.setBorder(border);
         add(output);
 
         search_b = new ImageIcon("res/search_b.png");
