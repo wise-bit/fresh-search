@@ -37,6 +37,8 @@ public class Main {
 
         t = new Trainer();
 
+        Parser p = new Parser();
+
         // Feedback. TODO: to be combined with GUI
         // t.rewardCalculate(true);
 
