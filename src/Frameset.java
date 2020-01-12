@@ -51,7 +51,6 @@ public class Frameset extends JFrame implements ActionListener {
 
         repaint();
 
-
     }
 
     @Override
@@ -59,7 +58,7 @@ public class Frameset extends JFrame implements ActionListener {
 
         if (event.getSource() == sb_holder) {
 
-            String text = search_in.getText();
+            String text = search_in.getText().toLowerCase();
             System.out.println(text);
             int valid = 0;
             for (int x = 0; x < text.length(); x++) {
@@ -74,11 +73,14 @@ public class Frameset extends JFrame implements ActionListener {
             if (valid >= 30) {
 
                 search_in.setText(" ");
-                output.setText(" Input MUST be less than 30 characters");
+                output.setText(" --- Input MUST be less than 30 characters --- ");
 
             } else {
 
                 System.out.println("Continuing program");
+
+                String input = Main.methods.filter(text);
+                output.setText(input);
 
             }
 
@@ -88,7 +90,3 @@ public class Frameset extends JFrame implements ActionListener {
         }
     }
 }
-
-
-
-
