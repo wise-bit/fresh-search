@@ -21,8 +21,9 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
         df.setMaximumFractionDigits(8);
-        // run();
-        retrainData();
+
+        run();
+        // retrainData();
 
     }
 
