@@ -27,6 +27,8 @@ public class Main {
     public static int level = 0;
     public static ArrayList<String> allKeyWords = new ArrayList<>();
 
+    public static Frameset f;
+
     public static void main(String[] args) throws IOException {
 
         df.setMaximumFractionDigits(8);
@@ -45,7 +47,7 @@ public class Main {
 
         t = new Trainer();
 
-        Frameset f = new Frameset();
+        f = new Frameset();
 
         // new Spider();
 
@@ -81,6 +83,14 @@ public class Main {
                 iter.remove();
             }
         }
+    }
+
+    public static void reset() {
+        Main.allKeyWords = new ArrayList<>();
+        Main.level = 0;
+        Main.currentQuery = "";
+        f.dispose();
+        f = new Frameset();
     }
 
 }

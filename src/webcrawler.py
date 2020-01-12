@@ -3,6 +3,34 @@ from googlesearch import search
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
 
+
+
+
+
+
+
+
+
+
+
+
+##################
+depth = 5
+##################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 print("fricc")
 
 if len(sys.argv) > 1:
@@ -11,7 +39,7 @@ if len(sys.argv) > 1:
 	urllist = []
 	finalurl = []
 	#loops through the array, 
-	for url in search(term, tld='com', stop=3, pause=0.01):
+	for url in search(term, tld='com', stop=depth, pause=0.01):
 		if("ebay.com" not in url and "youtube.com" not in url and "pinterest.com" not in url and "spotify.com" not in url and "twitter.com" not in url and "facebook.com" not in url and "amazon.com" not in url and "amazon.ca" not in url and "reddit.com" not in url):
 			if(term in url):
 				# print(url)

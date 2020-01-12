@@ -17,6 +17,8 @@ public class Frameset extends JFrame implements ActionListener {
     public JScrollPane outputArea;
     public static final Color VLB = new Color(183, 229,255);
 
+    public JButton reset;
+
     JPanel opinionPanel;
     JButton YES;
     JButton NO;
@@ -77,9 +79,9 @@ public class Frameset extends JFrame implements ActionListener {
         buttonPanel.setVisible(true);
         buttonPanel.setBounds(100, 50, 100, 30);
 
-        JLabel question = new JLabel("Was the data useful?");
+        JLabel question = new JLabel("Was the data too much?");
         Font newLabelFont=new Font(question.getFont().getName(), Font.BOLD, question.getFont().getSize() + 10);
-        question.setBounds(85, 700, 400, 20);
+        question.setBounds(75, 700, 400, 20);
         question.setFont(newLabelFont);
         this.add(question);
 
@@ -106,9 +108,25 @@ public class Frameset extends JFrame implements ActionListener {
 
         YES.setBounds(100, 600, 100, 100);
         NO.setBounds(100, 600, 100, 100);
+
         opinionPanel.add(YES);
         opinionPanel.add(NO);
         opinionPanel.setBounds(100, 600, 100, 100);
+
+        reset = new JButton("Reset");
+        reset.setBackground(new Color(255, 220, 76));
+        reset.setForeground(Color.BLACK);
+        reset.setBounds(140, 600, 100, 35);
+        reset.setFocusPainted(false);
+        reset.setFont(new Font("Tahoma", Font.BOLD, 12));
+        reset.setVisible(true);
+        reset.addActionListener(this);
+        JPanel resetPanel = new JPanel();
+        resetPanel.setBounds(140, 600, 100, 35);
+        resetPanel.setBackground(new Color(4, 0, 2, 254));
+        resetPanel.add(reset);
+        this.add(resetPanel);
+        resetPanel.setVisible(true);
 
         this.add(buttonPanel);
 
@@ -120,6 +138,12 @@ public class Frameset extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent event) {
+
+        try {
+            Main.updateAccuracy();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
 
         if (event.getSource() == sb_holder) {
 
@@ -183,7 +207,7 @@ public class Frameset extends JFrame implements ActionListener {
 
         if (event.getSource() == YES) {
             try {
-                Main.t.rewardCalculate(true);
+                Main.t.rewardCalculate(false);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -191,10 +215,14 @@ public class Frameset extends JFrame implements ActionListener {
 
         if (event.getSource() == NO) {
             try {
-                Main.t.rewardCalculate(false);
+                Main.t.rewardCalculate(true);
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }
+
+        if (event.getSource() == reset) {
+            Main.reset();
         }
 
     }
