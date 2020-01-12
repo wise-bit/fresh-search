@@ -9,7 +9,7 @@ if len(sys.argv) > 1:
 	urllist = []
 	finalurl = []
 	#loops through the array, 
-	for url in search(term, tld='com', stop=10):
+	for url in search(term, tld='com', stop=30, pause=0.01):
 		if("ebay.com" not in url and "youtube.com" not in url and "pinterest.com" not in url and "spotify.com" not in url and "twitter.com" not in url and "facebook.com" not in url and "amazon.com" not in url and "amazon.ca" not in url and "reddit.com" not in url):
 			if(term in url):
 				print(url)
@@ -18,12 +18,14 @@ if len(sys.argv) > 1:
 	print("------------------------------------------------------------------------------------------------")
 
 	for i in urllist:
-		soup = BeautifulSoup(urlopen(i), features="lxml")
+		try:
+			soup = BeautifulSoup(urlopen(i), features="lxml")
+		except:
+			continue
 		for link in soup.find_all('a'):
-			word = link.get('href')
+			word = link.get("href", "")
 			if("ebay.com" not in word and "youtube.com" not in word and "pinterest.com" not in word and "spotify.com" not in word and "twitter.com" not in word and "facebook.com" not in word and "amazon.com" not in word and "amazon.ca" not in word and "reddit.com" not in word and word.startswith("http")):
 				if(term in word):
-	 				finalurl.append(link.get('href'))
 	 				print(word)
 
 	#print(finalurl)
