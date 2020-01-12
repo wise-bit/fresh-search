@@ -18,6 +18,8 @@ public class Main {
 
     public static DecimalFormat df = new DecimalFormat("#");
 
+    public static Trainer t;
+
     public static void main(String[] args) throws IOException {
 
         df.setMaximumFractionDigits(8);
@@ -25,16 +27,28 @@ public class Main {
         run();
         // retrainData();
 
+
     }
 
-    public static void run() throws FileNotFoundException {
+    public static void run() throws IOException {
+
         methods = new KeyWordSearch();
         methods.loadDictionary();
+
+        t = new Trainer();
+
+        // Feedback. TODO: to be combined with GUI
+        // t.rewardCalculate(true);
+
+        // System.out.println(methods.filter(""));
+
     }
 
     public static void retrainData() throws IOException {
+
         // Miner m = new Miner("temp");
         Miner m = new Miner("training-files");
+
     }
 
 }

@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -19,7 +20,15 @@ public class KeyWordSearch {
 
         // map is already loaded as static from Main
 
-        return "";
+        String newstr = "";
+
+        for (String s: str.split(" ")) {
+
+            newstr += s + " ";
+
+        }
+
+        return newstr.substring(0, newstr.length()-1);
 
     }
 
