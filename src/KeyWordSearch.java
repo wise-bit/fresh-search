@@ -12,8 +12,6 @@ public class KeyWordSearch {
 
     public KeyWordSearch() {
 
-
-
     }
 
     public String filter(String str) {
@@ -23,9 +21,7 @@ public class KeyWordSearch {
         String newstr = "";
 
         for (String s: str.split(" ")) {
-
             newstr += s + " ";
-
         }
 
         return newstr.substring(0, newstr.length()-1);

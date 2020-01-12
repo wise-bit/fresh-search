@@ -9,9 +9,7 @@ import java.util.Scanner;
 
 public class Parser {
 
-    public Parser() throws IOException {
-
-        String urlString = "https://github.com/MLH/mlh-hackathon-blockstack-starter?utm_source=Major+League+Hacking+-+2020+Season&utm_campaign=cf20aa51c8-EYNTK_2020&utm_medium=email&utm_term=0_b490f2beb8-cf20aa51c8-9681793";
+    public Parser(String urlString) throws IOException {
 
         String content = null;
         URLConnection connection = null;
@@ -46,8 +44,20 @@ public class Parser {
 
         }
 
-        System.out.println(plainText); // this needs to be filtered
+        // System.out.println(plainText); // this needs to be filtered
+        System.out.println(filter(plainText));
 
+    }
+
+    public String filter(String str) {
+        String newS = "";
+        for (String s : str.split(" ")) {
+            // System.out.println(s + " : " + Main.persistentMap.get(s));
+            if (Main.persistentMap.get(s) == null && Main.persistentMap.get(s) < 0.00001) {
+                newS += s + " ";
+            }
+        }
+        return newS.substring(0, newS.length()-1);
     }
 
 }
