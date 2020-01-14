@@ -50,14 +50,18 @@ public class Parser {
         }
 
         // System.out.println(plainText); // this needs to be filtered
-        keywords = filter(plainText);
+        if (plainText != "")
+            keywords = filter(plainText);
+        else
+            keywords = "";
 
     }
 
     public String filter(String str) {
         String newS = "";
         for (String s : str.split(" ")) {
-            if (Main.persistentMap.get(s) != null && Main.persistentMap.get(s) < 0.00001) {
+            // System.out.println(s + " : " + Main.persistentMap.get(s));
+            if (Main.persistentMap.get(s) != null && Main.persistentMap.get(s) < Main.accuracy) {
                 newS += s + " ";
             }
         }
